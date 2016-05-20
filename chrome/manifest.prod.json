@@ -1,0 +1,20 @@
+{
+  "version": "0.0.0",
+  "name": "github-summary-chrome-extension",
+  "manifest_version": 2,
+  "description": "",
+  "browser_action": {
+    "default_title": "GitHub summary Chrome extension",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "img/icon-16.png",
+    "48": "img/icon-48.png",
+    "128": "img/icon-128.png"
+  },
+  "background": {
+    "page": "background.html"
+  },
+  "permissions": [ "contextMenus", "tabs", "storage" ],
+  "content_security_policy": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
+}
