@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from '../../app/containers/Root';
+import './style.css';
 
 chrome.storage.local.get('state', ({ state }) => {
   const initialState = JSON.parse(state || '{}');
