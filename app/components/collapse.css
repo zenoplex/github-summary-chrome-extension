@@ -1,0 +1,11 @@
+.collapse {
+    box-shadow: none !important;
+}
+
+.collapseTitle {
+    padding: 0 !important;
+}
+
+.collapseText {
+    padding: 0 !important;
+}

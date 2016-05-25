@@ -1,12 +1,26 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Header from '../components/Header';
-import Drawer from 'material-ui/Drawer';
+import Footer from '../components/Footer';
 import TextField from 'material-ui/TextField';
-import Checkbox from 'material-ui/Checkbox';
-import Subheader from 'material-ui/Subheader';
-import { List, ListItem } from 'material-ui/List';
 import { Grid, Col, Row } from 'react-flexbox-grid/lib/index';
-import RaisedButton from 'material-ui/RaisedButton';
+import PropertiesTable from '../components/PropertiesTable';
+import { Wrapper, ContentWrapper } from '../components/Wrapper';
+import DatePicker from 'material-ui/DatePicker';
+import Collapse from '../components/Collaspse';
+import Settings from '../components/Settings';
+
+const formatterOptions = [
+  { property: '{repo}', description: 'Repository name' },
+  { property: '{username}', description: 'Username of ' },
+  { property: '{title}', description: 'Title of issue or pull request' },
+  { property: '{checkbox}', description: 'Checkbox depending on flag' },
+  {
+    property: '{flag}', description: <span>
+      <code>mergedTag</code> or <code>closedTag</code>
+      to display depending on issue state or merged flag
+    </span>,
+  },
+];
 
 class Dashboard extends Component {
 
@@ -16,55 +30,57 @@ class Dashboard extends Component {
   }
 
   handleIconRightTap() {
-    const { actions } = this.props;
-    actions.toggleDrawer();
+
   }
 
   render() {
+    const today = new Date();
+
     return (
-      <div>
+      <Wrapper>
         <Header onIconRightTap={this.handleIconRightTap} />
+        <ContentWrapper>
 
-        <RaisedButton label="exec" primary />
+          <Grid fluid>
+            <Row>
+              <Col xs={12}>
+                <TextField
+                  floatingLabelText="formatter"
+                  hintText="{checkbox} {title} - {repo} by {username} {flag}"
+                  fullWidth
+                />
+              </Col>
+            </Row>
 
-        <Drawer open={false} openSecondary docked={false}>
-          <List>
-            <Subheader>General</Subheader>
-            <ListItem
-              primaryText={
-            <TextField
-              hintText="Github username"
-              fullWidth
-            />
-          }
-              disabled
-            />
-            <ListItem
-              primaryText={
-            <TextField
-              type="password"
-              hintText="token"
-              fullWidth
-            />
-          }
-              disabled
-            />
+            <Collapse label="see formatter placeholders">
+              <PropertiesTable properties={formatterOptions} />
+            </Collapse>
 
-          </List>
-          <List>
-            <Subheader>Options</Subheader>
-            <ListItem primaryText="output as markdown" leftCheckbox={<Checkbox />} />
-            <ListItem primaryText="request all pages" leftCheckbox={<Checkbox />} />
-            <ListItem primaryText="request per page" leftCheckbox={<Checkbox />} />
-            <ListItem disabled>
-              <RaisedButton label="save" primary />
-            </ListItem>
-          </List>
-        </Drawer>
-      </div>
+            <Row>
+              <Col xs={6}>
+                <DatePicker
+                  autoOk
+                  floatingLabelText="from"
+                  fullWidth
+                />
+              </Col>
+              <Col xs={6}>
+                <DatePicker
+                  autoOk
+                  floatingLabelText="to"
+                  maxDate={today}
+                  defaultDate={today}
+                  fullWidth
+                />
+              </Col>
+            </Row>
+          </Grid>
+        </ContentWrapper>
+        <Footer />
+        <Settings />
+      </Wrapper>
     );
   }
 }
-Dashboard.propTypes = {};
 
 export default Dashboard;
