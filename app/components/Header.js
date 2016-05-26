@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Settings from 'material-ui/svg-icons/action/settings';
 import Extension from 'material-ui/svg-icons/action/extension';
 
 const Header = ({ onIconRightTap }) =>
@@ -9,7 +9,7 @@ const Header = ({ onIconRightTap }) =>
     title="GitHub summary extension"
     iconElementLeft={<IconButton><Extension /></IconButton>}
     iconElementRight={
-      <IconButton onTouchTap={onIconRightTap}><MoreVertIcon /></IconButton>
+      <IconButton onTouchTap={onIconRightTap}><Settings /></IconButton>
     }
   />;
 
