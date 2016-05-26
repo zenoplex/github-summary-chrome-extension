@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import TextField from 'material-ui/TextField';
@@ -7,7 +7,7 @@ import PropertiesTable from '../components/PropertiesTable';
 import { Wrapper, ContentWrapper } from '../components/Wrapper';
 import DatePicker from 'material-ui/DatePicker';
 import Collapse from '../components/Collaspse';
-import Settings from '../components/Settings';
+import Sidebar from '../components/Sidebar';
 
 const formatterOptions = [
   { property: '{repo}', description: 'Repository name' },
@@ -30,17 +30,19 @@ class Dashboard extends Component {
   }
 
   handleIconRightTap() {
-
+    const { actions } = this.props;
+    actions.toggleSidebar();
   }
 
   render() {
+    const { actions } = this.props;
+    const { settings, sidebar } = this.props;
     const today = new Date();
 
     return (
       <Wrapper>
         <Header onIconRightTap={this.handleIconRightTap} />
         <ContentWrapper>
-
           <Grid fluid>
             <Row>
               <Col xs={12}>
@@ -62,6 +64,7 @@ class Dashboard extends Component {
                   autoOk
                   floatingLabelText="from"
                   fullWidth
+                  mode="landscape"
                 />
               </Col>
               <Col xs={6}>
@@ -77,10 +80,20 @@ class Dashboard extends Component {
           </Grid>
         </ContentWrapper>
         <Footer />
-        <Settings />
+        <Sidebar
+          onRequestChange={actions.toggleSidebar}
+          onSaveClick={actions.saveSettings}
+          {...sidebar}
+        />
       </Wrapper>
     );
   }
 }
+
+Dashboard.propTypes = {
+  actions:  PropTypes.object,
+  settings: PropTypes.object,
+  sidebar:  PropTypes.object,
+};
 
 export default Dashboard;
