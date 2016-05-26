@@ -38,6 +38,7 @@ const Sidebar = ({ onRequestChange, onSaveClick, ...props }) =>
 
 Sidebar.propTypes = {
   onRequestChange: PropTypes.func,
+  onSaveClick:     PropTypes.func,
 };
 
 export default Sidebar;
