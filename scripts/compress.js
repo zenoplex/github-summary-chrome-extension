@@ -1,6 +1,5 @@
 const fs = require('fs');
 const ChromeExtension = require('crx');
-const name = require('../build/manifest.json').name;
 const argv = require('minimist')(process.argv.slice(2));
 
 const keyPath = argv.key || 'key.pem';
@@ -14,6 +13,10 @@ const crx = new ChromeExtension({
 crx.load('build')
   .then(() => crx.loadContents())
   .then(archiveBuffer => {
+    /* eslint-disable import/no-unresolved */
+    const { name } = require('../build/manifest.json');
+    /* eslint-enable */
+
     fs.writeFile(`${name}.zip`, archiveBuffer);
 
     if (!argv.codebase || !existsKey) return;
