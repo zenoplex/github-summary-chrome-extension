@@ -36,7 +36,7 @@ class Dashboard extends Component {
 
   render() {
     const { actions } = this.props;
-    const { settings, sidebar } = this.props;
+    const { sidebar } = this.props;
     const today = new Date();
 
     return (
