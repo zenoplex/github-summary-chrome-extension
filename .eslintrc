@@ -12,7 +12,8 @@
   "rules": {
     "key-spacing": 0,
     "no-console": 0,
-    "global-require": 0
+    "global-require": 0,
+    "no-constant-condition": 0
   },
   "plugins": [
     "react"
