@@ -3,8 +3,9 @@ import rootReducer from '../reducers';
 import createSagaMiddleware from 'redux-saga';
 import storage from '../middlewares/storage';
 
+const sagaMiddleware = createSagaMiddleware();
 const enhancer = compose(
-  applyMiddleware(createSagaMiddleware()),
+  applyMiddleware(sagaMiddleware),
   storage(),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
@@ -18,5 +19,7 @@ export default function (initialState) {
       store.replaceReducer(nextRootReducer);
     });
   }
+
+  store.runSaga = sagaMiddleware.run;
   return store;
 }
