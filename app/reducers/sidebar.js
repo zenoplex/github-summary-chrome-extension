@@ -1,10 +1,20 @@
-import { TOGGLE_SIDEBAR } from '../constants/ActionTypes';
+import { OPEN_SIDEBAR, CLOSE_SIDEBAR, TOGGLE_SIDEBAR } from '../constants/ActionTypes';
 
 const initialState = {
   open: false,
 };
 
 const map = {
+  [OPEN_SIDEBAR]: state => ({
+    ...state,
+    open: true,
+  }),
+
+  [CLOSE_SIDEBAR]: state => ({
+    ...state,
+    open: false,
+  }),
+
   [TOGGLE_SIDEBAR]: state => ({
     ...state,
     open: !state.open,
