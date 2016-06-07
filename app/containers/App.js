@@ -20,6 +20,6 @@ App.propTypes = {
 };
 
 export default connect(
-  ({ settings, sidebar, summary }) => ({ settings, sidebar, summary }),
+  ({ settings, sidebar, summary, dates }) => ({ settings, sidebar, summary, dates }),
   dispatch => ({ actions: bindActionCreators(actions, dispatch) })
 )(App);
