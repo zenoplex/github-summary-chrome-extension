@@ -45,6 +45,11 @@ class Dashboard extends Component {
     actions.closeSidebar();
   }
 
+  handleFormatterChange = (e) => {
+    const { actions } = this.props;
+    actions.saveFormatter(e.target.value);
+  };
+
   render() {
     const { actions, sidebar, summary, settings } = this.props;
     const today = new Date();
@@ -60,6 +65,9 @@ class Dashboard extends Component {
                   floatingLabelText="formatter"
                   hintText="{checkbox} {title} - {repo} by {username} {flag}"
                   fullWidth
+                  value={settings.formatter}
+                  onChange={this.handleFormatterChange}
+                  onBlur={this.handleFormatterChange}
                 />
               </Col>
             </Row>
