@@ -6,6 +6,7 @@ const initialState = {
   perPage:         100,
   requestAllPages: false,
   markdown:        true,
+  formatter:       '',
 };
 
 const map = {
