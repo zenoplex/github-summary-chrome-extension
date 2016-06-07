@@ -6,8 +6,9 @@ import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import style from './sidebar.css';
+import { reduxForm } from 'redux-form';
 
-const Sidebar = ({ onRequestChange, onSaveClick, ...props }) =>
+const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
   <Drawer openSecondary docked={false} onRequestChange={onRequestChange} {...props}>
     <List>
       <Subheader>General</Subheader>
@@ -15,21 +16,47 @@ const Sidebar = ({ onRequestChange, onSaveClick, ...props }) =>
         <TextField
           floatingLabelText="GitHub username"
           fullWidth
+          { ...fields.username }
         />
       </ListItem>
       <ListItem className={style.listItem} disabled>
         <TextField
           floatingLabelText="token"
           fullWidth
+          { ...fields.token }
         />
       </ListItem>
-
     </List>
     <List>
       <Subheader>Options</Subheader>
-      <ListItem primaryText="output as markdown" leftCheckbox={<Checkbox />} />
-      <ListItem primaryText="request all pages" leftCheckbox={<Checkbox />} />
-      <ListItem primaryText="request per page" leftCheckbox={<Checkbox />} />
+      <ListItem
+        primaryText="output as markdown"
+        leftCheckbox={
+          <Checkbox
+            checked={fields.markdown.checked}
+            onCheck={fields.markdown.onChange}
+            value="markdown"
+          />
+        }
+      />
+      <ListItem
+        primaryText="request all pages"
+        leftCheckbox={
+          <Checkbox
+            checked={fields.requestAllPages.checked}
+            onCheck={fields.requestAllPages.onChange}
+            value="requestAllPages"
+          />
+        }
+      />
+      <ListItem className={style.listItem} disabled>
+        <TextField
+          floatingLabelText="request per page"
+          floatingLabelFixed
+          fullWidth
+          { ...fields.perPage }
+        />
+      </ListItem>
       <ListItem disabled>
         <RaisedButton label="save" primary onClick={onSaveClick} />
       </ListItem>
@@ -39,6 +66,10 @@ const Sidebar = ({ onRequestChange, onSaveClick, ...props }) =>
 Sidebar.propTypes = {
   onRequestChange: PropTypes.func,
   onSaveClick:     PropTypes.func,
+  fields:          PropTypes.object,
 };
 
-export default Sidebar;
+export default reduxForm({
+  form:   'sidebar',
+  fields: ['username', 'token', 'perPage', 'requestAllPages', 'markdown'],
+})(Sidebar);

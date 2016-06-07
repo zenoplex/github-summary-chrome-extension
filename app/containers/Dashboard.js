@@ -8,6 +8,7 @@ import { Wrapper, ContentWrapper } from '../components/Wrapper';
 import DatePicker from 'material-ui/DatePicker';
 import Collapse from '../components/Collaspse';
 import Sidebar from '../components/Sidebar';
+import TextArea from '../components/TextArea';
 
 const formatterOptions = [
   { property: '{repo}', description: 'Repository name' },
@@ -34,9 +35,18 @@ class Dashboard extends Component {
     actions.toggleSidebar();
   }
 
-  render() {
+  handleSaveClick = () => {
+    this.refs.sidebar.submit();
+  }
+
+  handleSubmit = (data) => {
     const { actions } = this.props;
-    const { sidebar } = this.props;
+    actions.saveSettings(data);
+    actions.closeSidebar();
+  }
+
+  render() {
+    const { actions, sidebar, summary, settings } = this.props;
     const today = new Date();
 
     return (
@@ -77,12 +87,20 @@ class Dashboard extends Component {
                 />
               </Col>
             </Row>
+            <Row>
+              <Col xs={12}>
+                <TextArea value={summary.value} />
+              </Col>
+            </Row>
           </Grid>
         </ContentWrapper>
-        <Footer />
+        <Footer onGenerateClick={actions.generateSummary} />
         <Sidebar
+          ref="sidebar"
           onRequestChange={actions.toggleSidebar}
-          onSaveClick={actions.saveSettings}
+          onSaveClick={this.handleSaveClick}
+          onSubmit={this.handleSubmit}
+          initialValues={settings}
           {...sidebar}
         />
       </Wrapper>
@@ -94,6 +112,7 @@ Dashboard.propTypes = {
   actions:  PropTypes.object,
   settings: PropTypes.object,
   sidebar:  PropTypes.object,
+  summary:  PropTypes.object,
 };
 
 export default Dashboard;

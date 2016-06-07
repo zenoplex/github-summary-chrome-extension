@@ -4,7 +4,7 @@ function saveState(state) {
   if (storage) storage.local.set({ state: JSON.stringify(state) });
 }
 
-function setBadge(text) {
+function setBadge(text = '') {
   if (browserAction) {
     browserAction.setBadgeText({ text });
   }
@@ -15,7 +15,7 @@ export default function () {
     const store = next(reducer, initialState);
     store.subscribe(() => {
       const state = store.getState();
-      saveState(state);
+      saveState(state.settings);
       setBadge();
     });
     return store;

@@ -12,6 +12,10 @@ export function toggleSidebar() {
   return { type: types.TOGGLE_SIDEBAR };
 }
 
-export function saveSettings() {
-  return { type: types.SAVE_SETTINGS };
+export function saveSettings(settings) {
+  return { type: types.SAVE_SETTINGS, payload: settings };
+}
+
+export function generateSummary() {
+  return { type: types.SUMMARY_FETCH_REQUEST };
 }
