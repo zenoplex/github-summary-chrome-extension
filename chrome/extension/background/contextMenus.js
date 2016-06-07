@@ -14,7 +14,7 @@ function popupWindow(type) {
   const options = {
     type: 'popup',
     width: 800,
-    height: 475,
+    height: 600,
   };
 
   if (type === 'open') {
