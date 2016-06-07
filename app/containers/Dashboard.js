@@ -50,8 +50,13 @@ class Dashboard extends Component {
     actions.saveFormatter(e.target.value);
   };
 
+  handleDatePickerChange = (e, { from, to }) => {
+    const { actions } = this.props;
+    actions.saveDateRange(from, to);
+  };
+
   render() {
-    const { actions, sidebar, summary, settings } = this.props;
+    const { actions, sidebar, summary, settings, dates } = this.props;
 
     return (
       <Wrapper>
@@ -75,7 +80,11 @@ class Dashboard extends Component {
               <PropertiesTable properties={formatterOptions} />
             </Collapse>
 
-            <RangedDatePicker />
+            <RangedDatePicker
+              from={dates.from}
+              to={dates.to}
+              onChange={this.handleDatePickerChange}
+            />
 
             <Row>
               <Col xs={12}>
@@ -103,6 +112,7 @@ Dashboard.propTypes = {
   settings: PropTypes.object,
   sidebar:  PropTypes.object,
   summary:  PropTypes.object,
+  dates:    PropTypes.object,
 };
 
 export default Dashboard;
