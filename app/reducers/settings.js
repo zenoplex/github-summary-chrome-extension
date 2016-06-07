@@ -1,4 +1,4 @@
-import { SAVE_SETTINGS } from '../constants/ActionTypes';
+import { SAVE_SETTINGS, SAVE_FORMATTER } from '../constants/ActionTypes';
 
 const initialState = {
   username:        '',
@@ -13,6 +13,11 @@ const map = {
   [SAVE_SETTINGS]: (state, { payload }) => ({
     ...state,
     ...payload,
+  }),
+
+  [SAVE_FORMATTER]: (state, { payload }) => ({
+    ...state,
+    formatter: payload,
   }),
 };
 
