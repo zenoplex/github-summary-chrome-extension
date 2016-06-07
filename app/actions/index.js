@@ -16,6 +16,10 @@ export function saveSettings(settings) {
   return { type: types.SAVE_SETTINGS, payload: settings };
 }
 
+export function saveDateRange(from, to) {
+  return { type: types.SAVE_DATE_RANGE, payload: { from, to } };
+}
+
 export function saveFormatter(formatter) {
   return { type: types.SAVE_FORMATTER, payload: formatter };
 }
