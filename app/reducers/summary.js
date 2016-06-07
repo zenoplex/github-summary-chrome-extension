@@ -1,14 +1,28 @@
-import { RECEIVE_SUMMARY } from '../constants/ActionTypes';
+import {
+  SUMMARY_FETCH_REQUEST, SUMMARY_FETCH_SUCCESS, SUMMARY_FETCH_FAIL,
+} from '../constants/ActionTypes';
 
 const initialState = {
   isFetching: true,
-  value: '',
+  value:      '',
 };
 
 const map = {
-  [RECEIVE_SUMMARY]: (state, { payload }) => ({
+  [SUMMARY_FETCH_REQUEST]: (state) => ({
     ...state,
-    value: payload,
+    isFetching: true,
+  }),
+
+  [SUMMARY_FETCH_SUCCESS]: (state, { payload }) => ({
+    ...state,
+    value:      payload,
+    isFetching: false,
+  }),
+
+  [SUMMARY_FETCH_FAIL]: (state) => ({
+    ...state,
+    value:      '',
+    isFetching: false,
   }),
 };
 
