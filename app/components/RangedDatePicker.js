@@ -5,8 +5,8 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 class RangedDatePicker extends Component {
 
   static propTypes = {
-    from:     PropTypes.oneOf([Date, PropTypes.string, PropTypes.number]),
-    to:       PropTypes.oneOf([Date, PropTypes.string, PropTypes.number]),
+    from:     PropTypes.instanceOf(Date),
+    to:       PropTypes.instanceOf(Date),
     onChange: PropTypes.func,
   };
 
