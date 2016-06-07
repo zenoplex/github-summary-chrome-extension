@@ -5,11 +5,8 @@ import * as types from '../constants/ActionTypes';
 
 function* fetchSummary() {
   try {
-    const { username, token } = yield select(state => state.settings);
-    const githubSummary = new GithubSummary({
-      username,
-      token,
-    });
+    const settings = yield select(state => state.settings);
+    const githubSummary = new GithubSummary({ ...settings });
     const summary = yield call([githubSummary, githubSummary.getSummary]);
     yield put({ type: types.SUMMARY_FETCH_SUCCESS, payload: summary });
   } catch (err) {

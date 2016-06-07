@@ -16,6 +16,10 @@ export function saveSettings(settings) {
   return { type: types.SAVE_SETTINGS, payload: settings };
 }
 
+export function saveFormatter(formatter) {
+  return { type: types.SAVE_FORMATTER, payload: formatter };
+}
+
 export function generateSummary() {
   return { type: types.SUMMARY_FETCH_REQUEST };
 }
