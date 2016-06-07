@@ -6,7 +6,8 @@ import * as types from '../constants/ActionTypes';
 function* fetchSummary() {
   try {
     const settings = yield select(state => state.settings);
-    const params = { ...settings };
+    const dates = yield select(state => state.dates);
+    const params = { ...settings, ...dates };
     if (!params.formatter) delete params.formatter;
 
     const githubSummary = new GithubSummary(params);

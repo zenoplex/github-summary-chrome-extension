@@ -5,7 +5,7 @@ import TextField from 'material-ui/TextField';
 import { Grid, Col, Row } from 'react-flexbox-grid/lib/index';
 import PropertiesTable from '../components/PropertiesTable';
 import { Wrapper, ContentWrapper } from '../components/Wrapper';
-import DatePicker from 'material-ui/DatePicker';
+import RangedDatePicker from '../components/RangedDatePicker';
 import Collapse from '../components/Collaspse';
 import Sidebar from '../components/Sidebar';
 import TextArea from '../components/TextArea';
@@ -50,9 +50,13 @@ class Dashboard extends Component {
     actions.saveFormatter(e.target.value);
   };
 
+  handleDatePickerChange = (e, { from, to }) => {
+    const { actions } = this.props;
+    actions.saveDateRange(from, to);
+  };
+
   render() {
-    const { actions, sidebar, summary, settings } = this.props;
-    const today = new Date();
+    const { actions, sidebar, summary, settings, dates } = this.props;
 
     return (
       <Wrapper>
@@ -76,25 +80,12 @@ class Dashboard extends Component {
               <PropertiesTable properties={formatterOptions} />
             </Collapse>
 
-            <Row>
-              <Col xs={6}>
-                <DatePicker
-                  autoOk
-                  floatingLabelText="from"
-                  fullWidth
-                  mode="landscape"
-                />
-              </Col>
-              <Col xs={6}>
-                <DatePicker
-                  autoOk
-                  floatingLabelText="to"
-                  maxDate={today}
-                  defaultDate={today}
-                  fullWidth
-                />
-              </Col>
-            </Row>
+            <RangedDatePicker
+              from={dates.from}
+              to={dates.to}
+              onChange={this.handleDatePickerChange}
+            />
+
             <Row>
               <Col xs={12}>
                 <TextArea value={summary.value} />
@@ -121,6 +112,7 @@ Dashboard.propTypes = {
   settings: PropTypes.object,
   sidebar:  PropTypes.object,
   summary:  PropTypes.object,
+  dates:    PropTypes.object,
 };
 
 export default Dashboard;

@@ -5,7 +5,7 @@ class TextArea extends Component {
 
   static propTypes = {
     value: PropTypes.string,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -14,21 +14,22 @@ class TextArea extends Component {
 
   handleFocus = () => {
     this.select();
-  }
+  };
 
   handleDoubleClick = () => {
     this.select();
-  }
+  };
 
   select = () => {
     this.textarea.select();
-  }
+  };
 
   render() {
-    const { value } = this.props;
+    const { value, ...props } = this.props;
 
     return (
       <textarea
+        {...props}
         ref={(textarea) => (this.textarea = textarea)}
         className={style.textarea}
         value={value}
