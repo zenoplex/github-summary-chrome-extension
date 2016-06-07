@@ -5,7 +5,7 @@ import TextField from 'material-ui/TextField';
 import { Grid, Col, Row } from 'react-flexbox-grid/lib/index';
 import PropertiesTable from '../components/PropertiesTable';
 import { Wrapper, ContentWrapper } from '../components/Wrapper';
-import DatePicker from 'material-ui/DatePicker';
+import RangedDatePicker from '../components/RangedDatePicker';
 import Collapse from '../components/Collaspse';
 import Sidebar from '../components/Sidebar';
 import TextArea from '../components/TextArea';
@@ -52,7 +52,6 @@ class Dashboard extends Component {
 
   render() {
     const { actions, sidebar, summary, settings } = this.props;
-    const today = new Date();
 
     return (
       <Wrapper>
@@ -76,25 +75,8 @@ class Dashboard extends Component {
               <PropertiesTable properties={formatterOptions} />
             </Collapse>
 
-            <Row>
-              <Col xs={6}>
-                <DatePicker
-                  autoOk
-                  floatingLabelText="from"
-                  fullWidth
-                  mode="landscape"
-                />
-              </Col>
-              <Col xs={6}>
-                <DatePicker
-                  autoOk
-                  floatingLabelText="to"
-                  maxDate={today}
-                  defaultDate={today}
-                  fullWidth
-                />
-              </Col>
-            </Row>
+            <RangedDatePicker />
+
             <Row>
               <Col xs={12}>
                 <TextArea value={summary.value} />
