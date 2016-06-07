@@ -17,5 +17,5 @@ export function saveSettings(settings) {
 }
 
 export function generateSummary() {
-  return { type: types.GENERATE_SUMMARY };
+  return { type: types.SUMMARY_FETCH_REQUEST };
 }
