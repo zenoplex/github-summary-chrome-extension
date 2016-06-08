@@ -25,26 +25,20 @@ const formatterOptions = [
 ];
 
 class Dashboard extends Component {
-
-  constructor(props) {
-    super(props);
-    this.handleIconRightTap = this.handleIconRightTap.bind(this);
-  }
-
-  handleIconRightTap() {
+  handleIconRightTap = () => {
     const { actions } = this.props;
     actions.toggleSidebar();
-  }
+  };
 
   handleSaveClick = () => {
     this.refs.sidebar.submit();
-  }
+  };
 
   handleSubmit = (data) => {
     const { actions } = this.props;
     actions.saveSettings(data);
     actions.closeSidebar();
-  }
+  };
 
   handleFormatterChange = (e) => {
     const { actions } = this.props;
