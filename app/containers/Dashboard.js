@@ -91,7 +91,7 @@ class Dashboard extends Component {
 
             <Row>
               <Col xs={12}>
-                <TextArea value={summary.value} disabled={isFetching} />
+                <TextArea value={value} disabled={isFetching} />
               </Col>
             </Row>
           </Grid>
