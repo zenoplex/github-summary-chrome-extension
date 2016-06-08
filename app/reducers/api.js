@@ -1,18 +1,5 @@
 import { FETCH_REQUEST, FETCH_RESPOND } from '../constants/ActionTypes';
-
-function request(state, api) {
-  return ({
-    ...state,
-    [`${api}IsLoading`]: true,
-  });
-}
-
-function respond(state, api) {
-  return ({
-    ...state,
-    [`${api}IsLoading`]: false,
-  });
-}
+import { request, respond } from '../core/api';
 
 const initialState = {};
 const map = {
@@ -20,7 +7,6 @@ const map = {
 
   [FETCH_RESPOND]: (state, { payload }) => respond(state, payload),
 };
-
 
 export default function reduce(state = initialState, action) {
   const reducer = map[action.type];
