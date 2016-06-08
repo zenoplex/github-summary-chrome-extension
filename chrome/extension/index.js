@@ -6,7 +6,7 @@ import sagas from 'sagas';
 import './style.css';
 
 chrome.storage.local.get('state', ({ state }) => {
-  const initialState = { settings: JSON.parse(state || '{}') };
+  const initialState = { settings: state ? JSON.parse(state) : undefined };
   const store = configureStore(initialState);
   store.runSaga(sagas);
 
