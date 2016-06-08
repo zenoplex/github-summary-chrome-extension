@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    todoapp: path.join(__dirname, 'chrome/extension/index'),
+    app: path.join(__dirname, 'chrome/extension/index'),
     background: path.join(__dirname, 'chrome/extension/background'),
   },
   output: {
