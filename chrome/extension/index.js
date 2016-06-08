@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from '../../app/containers/Root';
-import configureStore from '../../app/store/configureStore';
-import sagas from '../../app/sagas';
+import Root from 'containers/Root';
+import configureStore from 'store/configureStore';
+import sagas from 'sagas';
 import './style.css';
 
 chrome.storage.local.get('state', ({ state }) => {
