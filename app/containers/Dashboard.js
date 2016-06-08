@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import TextField from 'material-ui/TextField';
 import { Grid, Col, Row } from 'react-flexbox-grid/lib/index';
 import PropertiesTable from '../components/PropertiesTable';
+import Progress from '../components/Progress';
 import { Wrapper, ContentWrapper } from '../components/Wrapper';
 import RangedDatePicker from '../components/RangedDatePicker';
 import Collapse from '../components/Collaspse';
@@ -24,26 +25,20 @@ const formatterOptions = [
 ];
 
 class Dashboard extends Component {
-
-  constructor(props) {
-    super(props);
-    this.handleIconRightTap = this.handleIconRightTap.bind(this);
-  }
-
-  handleIconRightTap() {
+  handleIconRightTap = () => {
     const { actions } = this.props;
     actions.toggleSidebar();
-  }
+  };
 
   handleSaveClick = () => {
     this.refs.sidebar.submit();
-  }
+  };
 
   handleSubmit = (data) => {
     const { actions } = this.props;
     actions.saveSettings(data);
     actions.closeSidebar();
-  }
+  };
 
   handleFormatterChange = (e) => {
     const { actions } = this.props;
@@ -56,10 +51,15 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { actions, sidebar, summary, settings, dates } = this.props;
+    const {
+      actions, sidebar, summary, settings, dates, api: {
+        summaryIsLoading,
+      },
+    } = this.props;
 
     return (
       <Wrapper>
+        <Progress show={summaryIsLoading} />
         <Header onIconRightTap={this.handleIconRightTap} />
         <ContentWrapper>
           <Grid fluid>
@@ -88,12 +88,12 @@ class Dashboard extends Component {
 
             <Row>
               <Col xs={12}>
-                <TextArea value={summary.value} />
+                <TextArea value={summary} disabled={summaryIsLoading} />
               </Col>
             </Row>
           </Grid>
         </ContentWrapper>
-        <Footer onGenerateClick={actions.generateSummary} />
+        <Footer onGenerateClick={actions.generateSummary} disabled={summaryIsLoading} />
         <Sidebar
           ref="sidebar"
           onRequestChange={actions.toggleSidebar}
@@ -111,8 +111,9 @@ Dashboard.propTypes = {
   actions:  PropTypes.object,
   settings: PropTypes.object,
   sidebar:  PropTypes.object,
-  summary:  PropTypes.object,
+  summary:  PropTypes.string,
   dates:    PropTypes.object,
+  api:      PropTypes.object,
 };
 
 export default Dashboard;

@@ -1,0 +1,12 @@
+.progress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.progressInner {
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+}
