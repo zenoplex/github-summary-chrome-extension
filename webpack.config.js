@@ -16,7 +16,7 @@ module.exports = {
     stats: {
       colors: true,
     },
-    noInfo: false,
+    noInfo: true,
   },
   output: {
     path: path.join(__dirname, '../dev/js'),
@@ -35,6 +35,11 @@ module.exports = {
     }),
   ],
   resolve: {
+    root: [
+      path.resolve(__dirname, 'app'),
+      path.resolve(__dirname, 'chrome'),
+      path.resolve(__dirname, 'node_modules'),
+    ],
     extensions: ['', '.js'],
   },
   module: {
