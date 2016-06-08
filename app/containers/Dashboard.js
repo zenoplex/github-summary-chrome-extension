@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import TextField from 'material-ui/TextField';
 import { Grid, Col, Row } from 'react-flexbox-grid/lib/index';
 import PropertiesTable from '../components/PropertiesTable';
+import Progress from '../components/Progress';
 import { Wrapper, ContentWrapper } from '../components/Wrapper';
 import RangedDatePicker from '../components/RangedDatePicker';
 import Collapse from '../components/Collaspse';
@@ -57,9 +58,11 @@ class Dashboard extends Component {
 
   render() {
     const { actions, sidebar, summary, settings, dates } = this.props;
+    const { value, isFetching } = summary;
 
     return (
       <Wrapper>
+        <Progress show={isFetching} />
         <Header onIconRightTap={this.handleIconRightTap} />
         <ContentWrapper>
           <Grid fluid>
@@ -88,12 +91,12 @@ class Dashboard extends Component {
 
             <Row>
               <Col xs={12}>
-                <TextArea value={summary.value} />
+                <TextArea value={summary.value} disabled={isFetching} />
               </Col>
             </Row>
           </Grid>
         </ContentWrapper>
-        <Footer onGenerateClick={actions.generateSummary} />
+        <Footer onGenerateClick={actions.generateSummary} disabled={isFetching} />
         <Sidebar
           ref="sidebar"
           onRequestChange={actions.toggleSidebar}
