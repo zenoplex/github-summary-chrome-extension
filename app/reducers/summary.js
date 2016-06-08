@@ -3,7 +3,7 @@ import {
 } from '../constants/ActionTypes';
 
 const initialState = {
-  isFetching: true,
+  isFetching: false,
   value:      '',
 };
 
