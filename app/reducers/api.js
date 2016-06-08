@@ -1,5 +1,5 @@
-import { FETCH_REQUEST, FETCH_RESPOND } from '../constants/ActionTypes';
-import { request, respond } from '../core/api';
+import { FETCH_REQUEST, FETCH_RESPOND } from 'constants/ActionTypes';
+import { request, respond } from 'core/api';
 
 const initialState = {};
 const map = {

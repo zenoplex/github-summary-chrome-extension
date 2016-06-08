@@ -1,4 +1,4 @@
-import { SAVE_SETTINGS, SAVE_FORMATTER } from '../constants/ActionTypes';
+import { SAVE_SETTINGS, SAVE_FORMATTER } from 'constants/ActionTypes';
 
 const initialState = {
   username:        '',

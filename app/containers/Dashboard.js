@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 import TextField from 'material-ui/TextField';
 import { Grid, Col, Row } from 'react-flexbox-grid/lib/index';
-import PropertiesTable from '../components/PropertiesTable';
-import Progress from '../components/Progress';
-import { Wrapper, ContentWrapper } from '../components/Wrapper';
-import RangedDatePicker from '../components/RangedDatePicker';
-import Collapse from '../components/Collaspse';
-import Sidebar from '../components/Sidebar';
-import TextArea from '../components/TextArea';
+import PropertiesTable from 'components/PropertiesTable';
+import Progress from 'components/Progress';
+import { Wrapper, ContentWrapper } from 'components/Wrapper';
+import RangedDatePicker from 'components/RangedDatePicker';
+import Collapse from 'components/Collaspse';
+import Sidebar from 'components/Sidebar';
+import TextArea from 'components/TextArea';
 
 const formatterOptions = [
   { property: '{repo}', description: 'Repository name' },

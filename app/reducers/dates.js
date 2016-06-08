@@ -1,4 +1,4 @@
-import { SAVE_DATE_RANGE } from '../constants/ActionTypes';
+import { SAVE_DATE_RANGE } from 'constants/ActionTypes';
 
 const today = new Date();
 const yesturday = new Date();

@@ -1,4 +1,4 @@
-import { SUMMARY_FETCH_SUCCESS } from '../constants/ActionTypes';
+import { SUMMARY_FETCH_SUCCESS } from 'constants/ActionTypes';
 
 const initialState = '';
 
