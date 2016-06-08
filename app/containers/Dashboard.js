@@ -51,12 +51,16 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { actions, sidebar, summary, settings, dates } = this.props;
-    const { value, isFetching } = summary;
+    const {
+      actions, sidebar, summary, settings, dates, api: {
+        summaryIsLoading,
+      },
+    } = this.props;
+    const { value } = summary;
 
     return (
       <Wrapper>
-        <Progress show={isFetching} />
+        <Progress show={summaryIsLoading} />
         <Header onIconRightTap={this.handleIconRightTap} />
         <ContentWrapper>
           <Grid fluid>
@@ -85,12 +89,12 @@ class Dashboard extends Component {
 
             <Row>
               <Col xs={12}>
-                <TextArea value={value} disabled={isFetching} />
+                <TextArea value={value} disabled={summaryIsLoading} />
               </Col>
             </Row>
           </Grid>
         </ContentWrapper>
-        <Footer onGenerateClick={actions.generateSummary} disabled={isFetching} />
+        <Footer onGenerateClick={actions.generateSummary} disabled={summaryIsLoading} />
         <Sidebar
           ref="sidebar"
           onRequestChange={actions.toggleSidebar}
@@ -110,6 +114,7 @@ Dashboard.propTypes = {
   sidebar:  PropTypes.object,
   summary:  PropTypes.object,
   dates:    PropTypes.object,
+  api:      PropTypes.object,
 };
 
 export default Dashboard;
