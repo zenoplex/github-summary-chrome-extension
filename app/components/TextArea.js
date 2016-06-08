@@ -4,7 +4,8 @@ import style from './textarea.css';
 class TextArea extends Component {
 
   static propTypes = {
-    value: PropTypes.string,
+    value:    PropTypes.string,
+    disabled: PropTypes.bool,
   };
 
   constructor(props) {
@@ -25,7 +26,7 @@ class TextArea extends Component {
   };
 
   render() {
-    const { value, ...props } = this.props;
+    const { value, disabled, ...props } = this.props;
 
     return (
       <textarea
@@ -33,6 +34,7 @@ class TextArea extends Component {
         ref={(textarea) => (this.textarea = textarea)}
         className={style.textarea}
         value={value}
+        disabled={disabled}
         onFocus={this.handleFocus}
         onDoubleClick={this.handleDoubleClick}
       />
