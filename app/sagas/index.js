@@ -1,7 +1,7 @@
 import { takeLatest } from 'redux-saga';
 import { put, call, fork, select } from 'redux-saga/effects';
 import GithubSummary from 'github-summary';
-import * as types from '../constants/ActionTypes';
+import * as types from 'constants/ActionTypes';
 
 function* request(api) {
   yield put({ type: types.FETCH_REQUEST, payload: api });

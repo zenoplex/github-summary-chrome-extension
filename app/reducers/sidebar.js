@@ -1,4 +1,4 @@
-import { OPEN_SIDEBAR, CLOSE_SIDEBAR, TOGGLE_SIDEBAR } from '../constants/ActionTypes';
+import { OPEN_SIDEBAR, CLOSE_SIDEBAR, TOGGLE_SIDEBAR } from 'constants/ActionTypes';
 
 const initialState = {
   open: false,

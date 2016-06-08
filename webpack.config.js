@@ -8,7 +8,7 @@ const hotScript = `webpack-hot-middleware/client?path=http://${host}:${port}/__w
 module.exports = {
   devtool: 'eval-cheap-module-source-map',
   entry: {
-    todoapp: [hotScript, path.join(__dirname, 'chrome/extension/index')],
+    app: [hotScript, path.join(__dirname, 'chrome/extension/index')],
     background: [hotScript, path.join(__dirname, 'chrome/extension/background')],
   },
   devMiddleware: {
@@ -16,7 +16,7 @@ module.exports = {
     stats: {
       colors: true,
     },
-    noInfo: false,
+    noInfo: true,
   },
   output: {
     path: path.join(__dirname, '../dev/js'),
@@ -35,6 +35,11 @@ module.exports = {
     }),
   ],
   resolve: {
+    root: [
+      path.resolve(__dirname, 'app'),
+      path.resolve(__dirname, 'chrome'),
+      path.resolve(__dirname, 'node_modules'),
+    ],
     extensions: ['', '.js'],
   },
   module: {

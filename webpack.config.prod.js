@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    todoapp: path.join(__dirname, 'chrome/extension/index'),
+    app: path.join(__dirname, 'chrome/extension/index'),
     background: path.join(__dirname, 'chrome/extension/background'),
   },
   output: {
@@ -29,6 +29,11 @@ module.exports = {
     }),
   ],
   resolve: {
+    root: [
+      path.resolve(__dirname, 'app'),
+      path.resolve(__dirname, 'chrome'),
+      path.resolve(__dirname, 'node_modules'),
+    ],
     extensions: ['', '.js'],
   },
   module: {
