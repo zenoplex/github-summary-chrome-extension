@@ -56,7 +56,6 @@ class Dashboard extends Component {
         summaryIsLoading,
       },
     } = this.props;
-    const { value } = summary;
 
     return (
       <Wrapper>
@@ -89,7 +88,7 @@ class Dashboard extends Component {
 
             <Row>
               <Col xs={12}>
-                <TextArea value={value} disabled={summaryIsLoading} />
+                <TextArea value={summary} disabled={summaryIsLoading} />
               </Col>
             </Row>
           </Grid>
@@ -112,7 +111,7 @@ Dashboard.propTypes = {
   actions:  PropTypes.object,
   settings: PropTypes.object,
   sidebar:  PropTypes.object,
-  summary:  PropTypes.object,
+  summary:  PropTypes.string,
   dates:    PropTypes.object,
   api:      PropTypes.object,
 };
