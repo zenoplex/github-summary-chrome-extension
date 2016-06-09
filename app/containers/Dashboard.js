@@ -10,21 +10,8 @@ import RangedDatePicker from 'components/RangedDatePicker';
 import Collapse from 'components/Collaspse';
 import Sidebar from 'components/Sidebar';
 import TextArea from 'components/TextArea';
+import { formatters } from 'constants/GithubSummaryFormatter';
 import GithubSummary from 'github-summary';
-
-const formatterOptions = [
-  { property: '{repo}', description: 'Repository name' },
-  { property: '{username}', description: 'User who created PR or issue' },
-  { property: '{avatar}', description: 'Img element containing user avatar. Size is fixed to 18px' },
-  { property: '{title}', description: 'Title of issue or pull request' },
-  { property: '{checkbox}', description: 'Checkbox depending on flag' },
-  {
-    property: '{flag}', description: <span>
-      <code>mergedTag</code> or <code>closedTag</code>
-      to display depending on issue state or merged flag
-    </span>,
-  },
-];
 
 class Dashboard extends Component {
   handleIconRightTap = () => {
@@ -79,7 +66,7 @@ class Dashboard extends Component {
             </Row>
 
             <Collapse label="see formatter placeholders">
-              <PropertiesTable properties={formatterOptions} />
+              <PropertiesTable properties={formatters} />
             </Collapse>
 
             <RangedDatePicker
