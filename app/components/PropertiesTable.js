@@ -4,9 +4,9 @@ import {
 } from 'material-ui/Table';
 import style from './properties-table.css';
 
-const Row = ({ property, description }) =>
+const Row = ({ propertyColumnWidth, property, description }) =>
   <TableRow>
-    <TableRowColumn>
+    <TableRowColumn width={propertyColumnWidth}>
       <code>{property}</code>
     </TableRowColumn>
     <TableRowColumn>{description}</TableRowColumn>
@@ -16,18 +16,26 @@ const Row = ({ property, description }) =>
 Row.propTypes = {
   property:    PropTypes.string,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  propertyColumnWidth: PropTypes.number,
 };
 
-const PropertiesTable = ({ properties }) =>
+const PropertiesTable = ({ propertyColumnWidth = 100, properties }) =>
   <Table fixedHeader className={style.propertiesTable}>
     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
       <TableRow>
-        <TableHeaderColumn>Variable</TableHeaderColumn>
+        <TableHeaderColumn width={propertyColumnWidth}>Variable</TableHeaderColumn>
         <TableHeaderColumn>Description</TableHeaderColumn>
       </TableRow>
     </TableHeader>
     <TableBody displayRowCheckbox={false} stripedRows>
-      {properties.map((item, index) => <Row key={`properties-table-${index}`} {...item} />)}
+      {
+        properties.map((item, index) =>
+        <Row
+          key={`properties-table-${index}`}
+          propertyColumnWidth={propertyColumnWidth}
+          {...item}
+        />)
+      }
     </TableBody>
   </Table>
 ;
@@ -37,6 +45,7 @@ PropertiesTable.propTypes = {
     property:    PropTypes.string,
     description: PropTypes.any,
   })),
+  propertyColumnWidth: PropTypes.number,
 };
 
 PropertiesTable.defaultProps = {
