@@ -14,6 +14,12 @@ import { formatters } from 'constants/GithubSummaryFormatter';
 import GithubSummary from 'github-summary';
 
 class Dashboard extends Component {
+
+  componentDidMount() {
+    const { settings, actions } = this.props;
+    if (!settings.username) actions.toggleSidebar();
+  }
+
   handleIconRightTap = () => {
     const { actions } = this.props;
     actions.toggleSidebar();
@@ -25,6 +31,8 @@ class Dashboard extends Component {
 
   handleSubmit = (data) => {
     const { actions } = this.props;
+    if (!data.username) return;
+
     actions.saveSettings(data);
     actions.closeSidebar();
   };
@@ -82,7 +90,10 @@ class Dashboard extends Component {
             </Row>
           </Grid>
         </ContentWrapper>
-        <Footer onGenerateClick={actions.generateSummary} disabled={summaryIsLoading} />
+        <Footer
+          onGenerateClick={actions.generateSummary}
+          disabled={!settings.username || summaryIsLoading}
+        />
         <Sidebar
           ref="sidebar"
           onRequestChange={actions.toggleSidebar}
