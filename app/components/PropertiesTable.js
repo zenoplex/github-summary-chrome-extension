@@ -9,12 +9,12 @@ const Row = ({ propertyColumnWidth, property, description }) =>
     <TableRowColumn width={propertyColumnWidth}>
       <code>{property}</code>
     </TableRowColumn>
-    <TableRowColumn>{description}</TableRowColumn>
+    <TableRowColumn><span dangerouslySetInnerHTML={{ __html: description }} /></TableRowColumn>
   </TableRow>;
 
 Row.propTypes = {
-  property:    PropTypes.string,
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  property:            PropTypes.string,
+  description:         PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   propertyColumnWidth: PropTypes.number,
 };
 
@@ -29,17 +29,17 @@ const PropertiesTable = ({ propertyColumnWidth = 100, properties }) =>
     <TableBody displayRowCheckbox={false} stripedRows>
       {
         properties.map((item, index) =>
-        <Row
-          key={`properties-table-${index}`}
-          propertyColumnWidth={propertyColumnWidth}
-          {...item}
-        />)
+          <Row
+            key={`properties-table-${index}`}
+            propertyColumnWidth={propertyColumnWidth}
+            {...item}
+          />)
       }
     </TableBody>
   </Table>;
 
 PropertiesTable.propTypes = {
-  properties: PropTypes.arrayOf(PropTypes.shape({
+  properties:          PropTypes.arrayOf(PropTypes.shape({
     property:    PropTypes.string,
     description: PropTypes.any,
   })),
