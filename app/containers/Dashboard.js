@@ -17,12 +17,13 @@ class Dashboard extends Component {
 
   componentDidMount() {
     const { settings, actions } = this.props;
-    if (!settings.username) actions.toggleSidebar();
+    if (!settings.username) actions.openSidebar();
   }
 
   handleIconRightTap = () => {
     const { actions } = this.props;
-    actions.toggleSidebar();
+    actions.resetSettingsForm();
+    actions.openSidebar();
   };
 
   handleSaveClick = () => {
@@ -96,7 +97,7 @@ class Dashboard extends Component {
         />
         <Sidebar
           ref="sidebar"
-          onRequestChange={actions.toggleSidebar}
+          onRequestChange={actions.closeSidebar}
           onSaveClick={this.handleSaveClick}
           onSubmit={this.handleSubmit}
           initialValues={settings}

@@ -1,4 +1,5 @@
 import * as types from 'constants/ActionTypes';
+import { reset } from 'redux-form';
 
 export function openSidebar() {
   return { type: types.OPEN_SIDEBAR };
@@ -10,6 +11,10 @@ export function closeSidebar() {
 
 export function toggleSidebar() {
   return { type: types.TOGGLE_SIDEBAR };
+}
+
+export function resetSettingsForm() {
+  return reset('sidebar');
 }
 
 export function saveSettings(settings) {
