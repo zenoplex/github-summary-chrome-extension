@@ -15,6 +15,6 @@
   "background": {
     "page": "background.html"
   },
-  "permissions": [ "contextMenus", "tabs", "storage" ],
-  "content_security_policy": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
+  "permissions": [ "contextMenus", "management", "tabs", "storage", "https://api.github.com/" ],
+  "content_security_policy": "default-src 'self'; script-src 'self' 'unsafe-eval'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; connect-src https://api.github.com; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:;"
 }
