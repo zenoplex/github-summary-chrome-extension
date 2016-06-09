@@ -10,57 +10,59 @@ import { reduxForm } from 'redux-form';
 
 const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
   <Drawer openSecondary docked={false} onRequestChange={onRequestChange} {...props}>
-    <List>
-      <Subheader>General</Subheader>
-      <ListItem className={style.listItem} disabled>
-        <TextField
-          floatingLabelText="GitHub username"
-          fullWidth
-          { ...fields.username }
-        />
-      </ListItem>
-      <ListItem className={style.listItem} disabled>
-        <TextField
-          floatingLabelText="token"
-          fullWidth
-          { ...fields.token }
-        />
-      </ListItem>
-    </List>
-    <List>
-      <Subheader>Options</Subheader>
-      <ListItem
-        primaryText="output as markdown"
-        leftCheckbox={
-          <Checkbox
-            checked={fields.markdown.checked}
-            onCheck={fields.markdown.onChange}
-            value="markdown"
+    <form onSubmit={e => { e.preventDefault(); return onSaveClick(); }}>
+      <List>
+        <Subheader>General</Subheader>
+        <ListItem className={style.listItem} disabled>
+          <TextField
+            floatingLabelText="GitHub username"
+            fullWidth
+            { ...fields.username }
           />
-        }
-      />
-      <ListItem
-        primaryText="request all pages"
-        leftCheckbox={
-          <Checkbox
-            checked={fields.requestAllPages.checked}
-            onCheck={fields.requestAllPages.onChange}
-            value="requestAllPages"
+        </ListItem>
+        <ListItem className={style.listItem} disabled>
+          <TextField
+            floatingLabelText="token"
+            fullWidth
+            { ...fields.token }
           />
-        }
-      />
-      <ListItem className={style.listItem} disabled>
-        <TextField
-          floatingLabelText="request per page"
-          floatingLabelFixed
-          fullWidth
-          { ...fields.perPage }
+        </ListItem>
+      </List>
+      <List>
+        <Subheader>Options</Subheader>
+        <ListItem
+          primaryText="output as markdown"
+          leftCheckbox={
+            <Checkbox
+              checked={fields.markdown.checked}
+              onCheck={fields.markdown.onChange}
+              value="markdown"
+            />
+          }
         />
-      </ListItem>
-      <ListItem disabled>
-        <RaisedButton label="save" primary onClick={onSaveClick} />
-      </ListItem>
-    </List>
+        <ListItem
+          primaryText="request all pages"
+          leftCheckbox={
+            <Checkbox
+              checked={fields.requestAllPages.checked}
+              onCheck={fields.requestAllPages.onChange}
+              value="requestAllPages"
+            />
+          }
+        />
+        <ListItem className={style.listItem} disabled>
+          <TextField
+            floatingLabelText="request per page"
+            floatingLabelFixed
+            fullWidth
+            { ...fields.perPage }
+          />
+        </ListItem>
+        <ListItem disabled>
+          <RaisedButton type="submit" label="save" primary onClick={onSaveClick} />
+        </ListItem>
+      </List>
+    </form>
   </Drawer>;
 
 Sidebar.propTypes = {
