@@ -4,39 +4,46 @@ import {
 } from 'material-ui/Table';
 import style from './properties-table.css';
 
-const Row = ({ property, description }) =>
+const Row = ({ propertyColumnWidth, property, description }) =>
   <TableRow>
-    <TableRowColumn>
+    <TableRowColumn width={propertyColumnWidth}>
       <code>{property}</code>
     </TableRowColumn>
-    <TableRowColumn>{description}</TableRowColumn>
-  </TableRow>
-;
+    <TableRowColumn><span dangerouslySetInnerHTML={{ __html: description }} /></TableRowColumn>
+  </TableRow>;
 
 Row.propTypes = {
-  property:    PropTypes.string,
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  property:            PropTypes.string,
+  description:         PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  propertyColumnWidth: PropTypes.number,
 };
 
-const PropertiesTable = ({ properties }) =>
+const PropertiesTable = ({ propertyColumnWidth = 100, properties }) =>
   <Table fixedHeader className={style.propertiesTable}>
     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
       <TableRow>
-        <TableHeaderColumn>Variable</TableHeaderColumn>
+        <TableHeaderColumn width={propertyColumnWidth}>Property</TableHeaderColumn>
         <TableHeaderColumn>Description</TableHeaderColumn>
       </TableRow>
     </TableHeader>
     <TableBody displayRowCheckbox={false} stripedRows>
-      {properties.map((item, index) => <Row key={`properties-table-${index}`} {...item} />)}
+      {
+        properties.map((item, index) =>
+          <Row
+            key={`properties-table-${index}`}
+            propertyColumnWidth={propertyColumnWidth}
+            {...item}
+          />)
+      }
     </TableBody>
-  </Table>
-;
+  </Table>;
 
 PropertiesTable.propTypes = {
-  properties: PropTypes.arrayOf(PropTypes.shape({
+  properties:          PropTypes.arrayOf(PropTypes.shape({
     property:    PropTypes.string,
     description: PropTypes.any,
   })),
+  propertyColumnWidth: PropTypes.number,
 };
 
 PropertiesTable.defaultProps = {
