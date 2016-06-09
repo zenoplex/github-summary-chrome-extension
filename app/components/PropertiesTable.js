@@ -10,8 +10,7 @@ const Row = ({ propertyColumnWidth, property, description }) =>
       <code>{property}</code>
     </TableRowColumn>
     <TableRowColumn>{description}</TableRowColumn>
-  </TableRow>
-;
+  </TableRow>;
 
 Row.propTypes = {
   property:    PropTypes.string,
@@ -23,7 +22,7 @@ const PropertiesTable = ({ propertyColumnWidth = 100, properties }) =>
   <Table fixedHeader className={style.propertiesTable}>
     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
       <TableRow>
-        <TableHeaderColumn width={propertyColumnWidth}>Variable</TableHeaderColumn>
+        <TableHeaderColumn width={propertyColumnWidth}>Property</TableHeaderColumn>
         <TableHeaderColumn>Description</TableHeaderColumn>
       </TableRow>
     </TableHeader>
@@ -37,8 +36,7 @@ const PropertiesTable = ({ propertyColumnWidth = 100, properties }) =>
         />)
       }
     </TableBody>
-  </Table>
-;
+  </Table>;
 
 PropertiesTable.propTypes = {
   properties: PropTypes.arrayOf(PropTypes.shape({
