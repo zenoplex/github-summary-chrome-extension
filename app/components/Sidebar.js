@@ -10,7 +10,10 @@ import { reduxForm } from 'redux-form';
 
 const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
   <Drawer openSecondary docked={false} onRequestChange={onRequestChange} {...props}>
-    <form onSubmit={e => { e.preventDefault(); return onSaveClick(); }}>
+    <form
+      onSubmit={e => { e.preventDefault(); return onSaveClick(); }}
+      autoComplete="off"
+    >
       <List>
         <Subheader>General</Subheader>
         <ListItem className={style.listItem} disabled>
