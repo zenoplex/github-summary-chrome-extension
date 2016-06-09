@@ -10,10 +10,12 @@ import RangedDatePicker from 'components/RangedDatePicker';
 import Collapse from 'components/Collaspse';
 import Sidebar from 'components/Sidebar';
 import TextArea from 'components/TextArea';
+import GithubSummary from 'github-summary';
 
 const formatterOptions = [
   { property: '{repo}', description: 'Repository name' },
-  { property: '{username}', description: 'Username of ' },
+  { property: '{username}', description: 'User who created PR or issue' },
+  { property: '{avatar}', description: 'Img element containing user avatar. Size is fixed to 18px' },
   { property: '{title}', description: 'Title of issue or pull request' },
   { property: '{checkbox}', description: 'Checkbox depending on flag' },
   {
@@ -67,7 +69,7 @@ class Dashboard extends Component {
               <Col xs={12}>
                 <TextField
                   floatingLabelText="formatter"
-                  hintText="{checkbox} {title} - {repo} by {username} {flag}"
+                  hintText={GithubSummary.defaults.formatter}
                   fullWidth
                   value={settings.formatter}
                   onChange={this.handleFormatterChange}
