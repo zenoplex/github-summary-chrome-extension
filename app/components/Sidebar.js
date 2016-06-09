@@ -21,6 +21,7 @@ const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
             floatingLabelText="GitHub username"
             fullWidth
             { ...fields.username }
+            required
           />
         </ListItem>
         <ListItem className={style.listItem} disabled>
