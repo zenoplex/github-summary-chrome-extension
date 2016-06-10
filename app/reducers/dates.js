@@ -1,12 +1,8 @@
 import { SAVE_DATE_RANGE } from 'constants/ActionTypes';
 
-const today = new Date();
-const yesturday = new Date();
-yesturday.setDate(yesturday.getDate() - 1);
-
 const initialState = {
-  from: yesturday,
-  to:   today,
+  from: new Date(),
+  to:   new Date(),
 };
 
 const map = {
