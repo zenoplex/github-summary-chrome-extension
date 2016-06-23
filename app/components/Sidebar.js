@@ -15,7 +15,6 @@ const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
       autoComplete="off"
     >
       <List>
-        <Subheader>General</Subheader>
         <ListItem className={style.listItem} disabled>
           <TextField
             floatingLabelText="GitHub username"
@@ -54,6 +53,7 @@ const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
             />
           }
         />
+        <Subheader>For formatter {'{flag}'} option</Subheader>
         <ListItem className={style.listItem} disabled>
           <TextField
             floatingLabelText="merged label"
