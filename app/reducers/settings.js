@@ -3,10 +3,11 @@ import { SAVE_SETTINGS, SAVE_FORMATTER } from 'constants/ActionTypes';
 const initialState = {
   username:        '',
   token:           '',
-  perPage:         100,
   requestAllPages: false,
   markdown:        true,
   formatter:       '',
+  mergedTag: '',
+  closedTag: '',
 };
 
 const map = {
