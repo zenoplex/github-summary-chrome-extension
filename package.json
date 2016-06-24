@@ -14,10 +14,11 @@
     "compress": "node scripts/compress",
     "compress-keygen": "crx keygen",
     "lint": "eslint .",
+    "typecheck": "flow",
     "html": "node scripts/html",
     "replace-webpack": "node scripts/replace-webpack",
     "mocha": "cross-env NODE_ENV=test mocha --compilers js:babel-register test/app/**/**_spec.js",
-    "test": "npm run lint && npm run mocha",
+    "test": "npm run typecheck && npm run lint && npm run mocha",
     "test:watch": "npm run mocha -- -w",
     "start": "node scripts/dev"
   },
