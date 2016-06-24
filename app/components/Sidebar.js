@@ -15,7 +15,6 @@ const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
       autoComplete="off"
     >
       <List>
-        <Subheader>General</Subheader>
         <ListItem className={style.listItem} disabled>
           <TextField
             floatingLabelText="GitHub username"
@@ -54,12 +53,21 @@ const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
             />
           }
         />
+        <Subheader>For formatter {'{flag}'} option</Subheader>
         <ListItem className={style.listItem} disabled>
           <TextField
-            floatingLabelText="request per page"
+            floatingLabelText="merged label"
             floatingLabelFixed
             fullWidth
-            { ...fields.perPage }
+            { ...fields.mergedTag }
+          />
+        </ListItem>
+        <ListItem className={style.listItem} disabled>
+          <TextField
+            floatingLabelText="closed label"
+            floatingLabelFixed
+            fullWidth
+            { ...fields.closedTag }
           />
         </ListItem>
         <ListItem disabled>
@@ -77,5 +85,5 @@ Sidebar.propTypes = {
 
 export default reduxForm({
   form:   'sidebar',
-  fields: ['username', 'token', 'perPage', 'requestAllPages', 'markdown'],
+  fields: ['username', 'token', 'mergedTag', 'closedTag', 'requestAllPages', 'markdown'],
 })(Sidebar);

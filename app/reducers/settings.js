@@ -1,12 +1,10 @@
 import { SAVE_SETTINGS, SAVE_FORMATTER } from 'constants/ActionTypes';
+import GithubSummary from 'github-summary';
 
 const initialState = {
+  ...GithubSummary.defaults,
   username:        '',
   token:           '',
-  perPage:         100,
-  requestAllPages: false,
-  markdown:        true,
-  formatter:       '',
 };
 
 const map = {
