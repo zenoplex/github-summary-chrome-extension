@@ -19,7 +19,7 @@ const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
           <TextField
             floatingLabelText="GitHub username"
             fullWidth
-            { ...fields.username }
+            {...fields.username}
             required
           />
         </ListItem>
@@ -27,7 +27,7 @@ const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
           <TextField
             floatingLabelText="token"
             fullWidth
-            { ...fields.token }
+            {...fields.token}
           />
         </ListItem>
       </List>
@@ -59,7 +59,7 @@ const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
             floatingLabelText="merged label"
             floatingLabelFixed
             fullWidth
-            { ...fields.mergedTag }
+            {...fields.mergedTag}
           />
         </ListItem>
         <ListItem className={style.listItem} disabled>
@@ -67,7 +67,7 @@ const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
             floatingLabelText="closed label"
             floatingLabelFixed
             fullWidth
-            { ...fields.closedTag }
+            {...fields.closedTag}
           />
         </ListItem>
         <ListItem disabled>

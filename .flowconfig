@@ -1,0 +1,16 @@
+[ignore]
+.*/node_modules/.*
+.*/dev/*.
+.*/build/*.
+
+[include]
+
+[libs]
+app/declares
+
+[options]
+module.system.node.resolve_dirname=app
+munge_underscores=true
+esproposal.class_instance_fields=enable
+esproposal.class_static_fields=enable
+suppress_comment= \\(.\\|\n\\)*\\$flow-disable
