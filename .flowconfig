@@ -10,6 +10,8 @@ app/declares
 
 [options]
 module.system.node.resolve_dirname=app
+module.system=haste
+module.name_mapper='.*\.s?css' -> 'CSSModule'
 munge_underscores=true
 esproposal.class_instance_fields=enable
 esproposal.class_static_fields=enable
