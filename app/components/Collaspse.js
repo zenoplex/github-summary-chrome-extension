@@ -1,8 +1,15 @@
-import React, { PropTypes } from 'react';
+// @flow
+
+import React from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import style from './collapse.css';
 
-const Collapse = ({ label, children, ...props }) =>
+type Props = {
+  label: string,
+  children: any,
+}
+
+const Collapse = ({ label, children, ...props }: Props) =>
   <Card className={style.collapse} {...props}>
     <CardTitle
       className={style.collapseTitle}
@@ -14,10 +21,5 @@ const Collapse = ({ label, children, ...props }) =>
       {children}
     </CardText>
   </Card>;
-
-Collapse.propTypes = {
-  label:    PropTypes.string,
-  children: PropTypes.node,
-};
 
 export default Collapse;
