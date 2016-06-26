@@ -1,27 +1,27 @@
-import React, { Component, PropTypes } from 'react';
+// @flow
+
+import React, { Component } from 'react';
 import style from './textarea.css';
+
+type Props = {
+  value: ?string,
+  disabled: ?boolean,
+}
 
 class TextArea extends Component {
 
-  static propTypes = {
-    value:    PropTypes.string,
-    disabled: PropTypes.bool,
-  };
+  props: Props;
+  textarea: HTMLTextAreaElement;
 
-  constructor(props) {
-    super(props);
-    this.textarea = null;
-  }
-
-  handleFocus = () => {
+  handleFocus: () => void = () => {
     this.select();
   };
 
-  handleDoubleClick = () => {
+  handleDoubleClick: () => void = () => {
     this.select();
   };
 
-  select = () => {
+  select: () => void = () => {
     this.textarea.select();
   };
 

@@ -1,34 +1,36 @@
-import * as types from 'constants/ActionTypes';
+// @flow
+
 import { reset } from 'redux-form';
+import type { Action } from 'types/actions';
 
-export function openSidebar() {
-  return { type: types.OPEN_SIDEBAR };
+export function openSidebar(): Action {
+  return { type: 'OPEN_SIDEBAR' };
 }
 
-export function closeSidebar() {
-  return { type: types.CLOSE_SIDEBAR };
+export function closeSidebar(): Action {
+  return { type: 'CLOSE_SIDEBAR' };
 }
 
-export function toggleSidebar() {
-  return { type: types.TOGGLE_SIDEBAR };
+export function toggleSidebar(): Action {
+  return { type: 'TOGGLE_SIDEBAR' };
 }
 
-export function resetSettingsForm() {
+export function resetSettingsForm(): Action {
   return reset('sidebar');
 }
 
-export function saveSettings(settings) {
-  return { type: types.SAVE_SETTINGS, payload: settings };
+export function saveSettings(settings: Object): Action {
+  return { type: 'SAVE_SETTINGS', settings };
 }
 
-export function saveDateRange(from, to) {
-  return { type: types.SAVE_DATE_RANGE, payload: { from, to } };
+export function saveDateRange(from: Date, to: Date): Action {
+  return { type: 'SAVE_DATE_RANGE', from, to };
 }
 
-export function saveFormatter(formatter) {
-  return { type: types.SAVE_FORMATTER, payload: formatter };
+export function saveFormatter(formatter: string): Action {
+  return { type: 'SAVE_FORMATTER', formatter };
 }
 
-export function generateSummary() {
-  return { type: types.SUMMARY_FETCH_REQUEST };
+export function generateSummary(): Action {
+  return { type: 'SUMMARY_FETCH_REQUEST' };
 }

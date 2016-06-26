@@ -1,3 +1,5 @@
+// @flow
+
 import React, { PropTypes } from 'react';
 import Drawer from 'material-ui/Drawer';
 import Checkbox from 'material-ui/Checkbox';
@@ -8,7 +10,20 @@ import TextField from 'material-ui/TextField';
 import style from './sidebar.css';
 import { reduxForm } from 'redux-form';
 
-const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }) =>
+type Props = {
+  onRequestChange: () => any,
+  onSaveClick: () => any,
+  fields: {
+    username: Object,
+    token: Object,
+    markdown: Object,
+    requestAllPages: Object,
+    mergedTag: Object,
+    closedTag: Object,
+  },
+}
+
+const Sidebar = ({ onRequestChange, onSaveClick, fields, ...props }: Props) =>
   <Drawer openSecondary docked={false} onRequestChange={onRequestChange} {...props}>
     <form
       onSubmit={e => { e.preventDefault(); return onSaveClick(); }}

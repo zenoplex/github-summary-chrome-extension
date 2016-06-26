@@ -1,20 +1,34 @@
-import React, { Component, PropTypes } from 'react';
+// @flow
+
+import React, { Component } from 'react';
 import DatePicker from 'material-ui/DatePicker';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
+type DefaultProps = {
+  onChange: Function,
+}
+
+type Props = {
+  from: ?Date,
+  to: ?Date,
+  onChange: Function,
+}
+
+type State = {
+  from: Date,
+  to: Date,
+}
+
 class RangedDatePicker extends Component {
 
-  static propTypes = {
-    from:     PropTypes.instanceOf(Date),
-    to:       PropTypes.instanceOf(Date),
-    onChange: PropTypes.func,
-  };
-
-  static defaultProps = {
+  static defaultProps: DefaultProps = {
     onChange: () => {},
   };
 
-  constructor(props) {
+  props: Props;
+  state: State;
+
+  constructor(props: Props) {
     super(props);
 
     const { from, to } = props;
@@ -26,7 +40,7 @@ class RangedDatePicker extends Component {
     };
   }
 
-  handleMinDateChange = (e, date) => {
+  handleMinDateChange: (e: Event, date: Date) => void = (e, date) => {
     const { onChange } = this.props;
     const { to } = this.state;
     const obj = { from: date };
@@ -35,7 +49,7 @@ class RangedDatePicker extends Component {
     onChange(e, { ...obj, to });
   };
 
-  handleMaxDateChange = (e, date) => {
+  handleMaxDateChange: (e: Event, date: Date) => void = (e, date) => {
     const { onChange } = this.props;
     const { from } = this.state;
     const obj = {

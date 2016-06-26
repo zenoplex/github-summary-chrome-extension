@@ -1,9 +1,16 @@
-import React, { PropTypes } from 'react';
+// @flow
+
+import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 import style from './footer.css';
 
-const Footer = ({ onGenerateClick, disabled }) =>
+type Props = {
+  onGenerateClick?: () => any,
+  disabled?: boolean,
+}
+
+const Footer = ({ onGenerateClick, disabled }: Props) =>
   <Toolbar className={style.footer} noGutter>
     <ToolbarGroup />
     <ToolbarGroup>
@@ -15,10 +22,5 @@ const Footer = ({ onGenerateClick, disabled }) =>
       />
     </ToolbarGroup>
   </Toolbar>;
-
-Footer.propTypes = {
-  onGenerateClick: PropTypes.func,
-  disabled: PropTypes.bool,
-};
 
 export default Footer;
