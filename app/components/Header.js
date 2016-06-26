@@ -1,10 +1,16 @@
-import React, { PropTypes } from 'react';
+// @flow
+
+import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Settings from 'material-ui/svg-icons/action/settings';
 import Extension from 'material-ui/svg-icons/action/extension';
 
-const Header = ({ onIconRightTap }) =>
+type Props = {
+  onIconRightTap?: () => any,
+}
+
+const Header = ({ onIconRightTap }: Props) =>
   <AppBar
     title="GitHub summary extension"
     iconElementLeft={<IconButton><Extension /></IconButton>}
@@ -12,9 +18,5 @@ const Header = ({ onIconRightTap }) =>
       <IconButton onTouchTap={onIconRightTap}><Settings /></IconButton>
     }
   />;
-
-Header.propTypes = {
-  onIconRightTap: PropTypes.func,
-};
 
 export default Header;
