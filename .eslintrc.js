@@ -17,6 +17,15 @@ module.exports =
     'no-new': 0,
     'flow-vars/define-flow-type': 1,
     'flow-vars/use-flow-type': 1,
+    'react/sort-comp': [2, {
+      order: [
+        'static-methods',
+        '/^(props|state)$/',
+        'lifecycle',
+        'everything-else',
+        'render',
+      ]
+    }]
   },
   plugins: [
     'react',
