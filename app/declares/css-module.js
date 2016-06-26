@@ -1,3 +1,3 @@
 declare module CSSModule {
-  declare var exports: {[index: string]: string};
+  declare var exports: any;
 }
