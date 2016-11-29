@@ -5,7 +5,7 @@
     "npm": ">=3.3"
   },
   "name": "github-summary-chrome-extension",
-  "version": "0.0.0",
+  "version": "0.3.0",
   "description": "",
   "scripts": {
     "build": "cross-env NODE_ENV=production node scripts/build",
@@ -20,7 +20,8 @@
     "mocha": "cross-env NODE_ENV=test mocha --compilers js:babel-register test/app/**/**_spec.js",
     "test": "npm run typecheck && npm run lint && npm run mocha",
     "test:watch": "npm run mocha -- -w",
-    "start": "node scripts/dev"
+    "start": "node scripts/dev",
+    "release-pr": "babel-node scripts/release"
   },
   "repository": {
     "type": "git",
